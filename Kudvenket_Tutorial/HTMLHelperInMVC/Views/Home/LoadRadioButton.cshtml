@@ -1,0 +1,16 @@
+﻿@model HTMLHelperInMVC.Models.Company
+
+@{
+    ViewBag.Title = "LoadRadioButton";
+}
+
+<h2>LoadRadioButton</h2>
+@using (Html.BeginForm())
+{
+    foreach (var tblDepartment in Model.Department)
+    {
+      @Html.RadioButtonFor(x=>x.SelectDepartment, tblDepartment.Id)@tblDepartment.Name
+    }
+    <br/><br/>
+    <input type="submit" value="Submit"/>
+}

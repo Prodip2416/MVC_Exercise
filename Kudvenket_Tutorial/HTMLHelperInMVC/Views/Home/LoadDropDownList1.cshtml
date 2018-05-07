@@ -1,0 +1,11 @@
+﻿@model HTMLHelperInMVC.Models.Company
+
+@{
+    ViewBag.Title = "LoadDropDownList1";
+}
+
+<h2>LoadDropDownList1</h2>
+
+@Html.TextBoxFor(x=>x.CompanyName)
+<br/>
+@Html.DropDownListFor(x=>x.Department, new SelectList(Model.Department,"Id","name"),"Select Department")

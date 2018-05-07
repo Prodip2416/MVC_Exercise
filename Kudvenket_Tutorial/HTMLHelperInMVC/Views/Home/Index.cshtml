@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>HTML helper control</h2>
+
+@Html.Label("FirstName","firstname")
+@Html.TextBox("firstname","Prodip",
+    new {@readonly="true", style="background-color:red; color: white;", title="Please enter your firstname name"})
+<br/>
+@Html.TextArea("comments","",5,20,null)
+<br/>
+@Html.Password("password")
+@Html.Hidden("id")
+<br/>
+<br/>
+
+  @Html.DropDownList("Department", new List<SelectListItem>()
+  {
+      new SelectListItem() {Text = "IT", Value = "IT"},
+      new SelectListItem() {Text = "HR", Value = "HR" , Selected = true},
+      new SelectListItem() {Text = "Payroll" , Value = "Payroll"}
+  },"Select Dapertment")
+
