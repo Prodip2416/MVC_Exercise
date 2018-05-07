@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee area Index</h2>
+
+@Html.Action("Main area home page","Index","Home", new {area=""})
+@Html.Action("Employee area home page", "Index", "Home", new { area = "Employee" })
+@Html.Action("Employer area home page", "Index", "Home", new { area = "Employer" })
+@Html.Action("Manager area home page", "Index", "Home", new { area = "Manager" })

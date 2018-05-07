@@ -1,0 +1,31 @@
+﻿
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+<h2>Students</h2>
+
+@Ajax.ActionLink("All Student", "GetAllStudent", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divStudents",
+    InsertionMode = InsertionMode.Replace
+})
+<span style="color:blue">|</span>
+@Ajax.ActionLink("Top 3", "GetTop3Student", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "divStudents",
+    InsertionMode = InsertionMode.Replace
+})
+<span style="color: blue">|</span>
+@Ajax.ActionLink("Bottom 3", "GetButtom3Student", new AjaxOptions()
+{
+    HttpMethod = "GEet",
+    UpdateTargetId = "divStudents",
+    InsertionMode = InsertionMode.Replace
+})
+
+@*<div id="divStudents">
+    
+</div>*@
+
