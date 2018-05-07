@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@for (int i = 0; i <= 10; i++)
+{
+    @i
+    if (i%2 == 0)
+    {
+        @: - Even
+        @*<text> - Evan </text>*@
+    }
+    else
+    {
+        @: - Odd
+    }
+    <br/>
+}
+<br/>
+
+@{
+    int day = 10;
+    int month = 03;
+    int year = 2018;
+}
+
+ Date Is : @day-@month-@year
+<br/>
+I will meet u you @@ office.
