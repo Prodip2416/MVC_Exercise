@@ -1,0 +1,14 @@
+﻿@model CheckBoxListInMVC.Models.CityList
+
+@{
+    ViewBag.Title = "City";
+}
+
+<h2>City</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ListBoxFor(x=>x.Cities, Model.Cities, new { size=6})
+    <br/><br/>
+    <input type="submit" value="Submit"/>
+}
