@@ -1,0 +1,18 @@
+﻿@using FirstApplication.Models
+@model IEnumerable<FirstApplication.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employe List</h2>
+
+
+<ul>
+    @foreach (Employee employee in @Model)
+    {
+        <li>@Html.ActionLink(employee.Name, "Details", new {id = employee.EmployeeId})</li>
+    }
+</ul>
+@Html.ActionLink("Back To Department List","Index","Department")
+
