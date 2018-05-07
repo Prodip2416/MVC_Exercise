@@ -1,0 +1,80 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<ImplementingSearchFunctionalityInMVC.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @using (Html.BeginForm("Index","Employee", FormMethod.Get))
+    {
+        <b>SearchBy : </b>@Html.RadioButton("searchBy", "Name")<text>Name</text>
+        @Html.RadioButton("searchBy", "Gender")<text>Gender</text><br/>
+        @Html.TextBox("search") <input type="submit" value="Search"/>
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortBy = ViewBag.NameSort, searchBy = Request["searchBy"], search = Request["search"] })
+        </th>
+        <th>
+            @Html.ActionLink("Gender", "Index", new { sortBy = ViewBag.GenderSort, searchBy = Request["searchBy"], search = Request["search"] })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model =>
+            model.First().Email)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @*<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th></th>
+    </tr>*@
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="4">no row match search criteria</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+                    @Html.ActionLink("Details", "Details", new {id = item.ID}) |
+                    @Html.ActionLink("Delete", "Delete", new {id = item.ID})
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+@Html.PagedListPager(Model, page=>Url.Action("Index", new {page, searchBy=Request.QueryString["searchBy"], search=Request.QueryString["search"], sortBy = Request["sortBy"] }),
+    new PagedListRenderOptions() {Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true, DisplayItemSliceAndTotal = true})
